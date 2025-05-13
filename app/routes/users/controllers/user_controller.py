@@ -1,4 +1,5 @@
 from sqlalchemy.orm import Session
+from fastapi.responses import JSONResponse
 from fastapi import HTTPException
 
 from app.db.models.user import User
@@ -20,8 +21,12 @@ class UserController:
         user_exist = User.get_user_by_email(self.db_session, self.email)
         if user_exist:
             raise HTTPException(
-                tatus_code=400, detail="User email already registered"
+                status_code=400, detail="User email already registered"
             )
-        return User.create_user(
+        User.create_user(
             self.db_session, user=user
+        )
+        return JSONResponse(
+            status_code=200,
+            content={"message": "User registered successfully"}
         )
