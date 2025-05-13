@@ -57,11 +57,11 @@ class UserLoginController:
 
         payload = {"sub": self.user_login_email, "exp": exp}
 
-        access_token = jwt.decode(
-                payload,
-                settings.SECRET_KEY,
-                algorithms=[settings.ALGORITHM]
-            )
+        access_token = jwt.encode(
+            payload,
+            settings.SECRET_KEY,
+            settings.ALGORITHM
+        )
 
         return {
             "access_token": access_token,
