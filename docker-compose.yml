@@ -11,10 +11,8 @@ services:
     image: postgres:14.2-alpine
     container_name: fastapi_postgres
     restart: always
-    environment:
-      POSTGRES_USER: fastapi_test
-      POSTGRES_PASSWORD: fastapi_test_password
-      POSTGRES_DB: db
+    env_file:
+      .env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
