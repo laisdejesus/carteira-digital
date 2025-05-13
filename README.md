@@ -1,7 +1,8 @@
 Documentação referente ai Desafio Técnico – Desenvolvedor(a) Back-end Sênior
 
 ✨ Requisitos do Desafio realizados
-🔹 Funcionalidades Esperadas
+🔹 Funcionalidades Implementadas
+
 Autenticação e Gerenciamento de Usuários
 - Cadastro e login de usuários (simples, com e-mail/senha).
 - Uso de tokens JWT para autenticação.
@@ -15,10 +16,12 @@ Gestão de Transporte Público
 
 🔹 Requisitos Técnicos utilizados
 FastAPI como framework principal.
-Banco de Dados Relacional (PostgreSQL usando ORM como SQLAlchemy).
-Ferramenta de migrations: Alembic
+Banco de Dados Relacional utilizando PostgreSQL e ORM como SQLAlchemy.
+Ferramenta de migrations utilizando Alembic
+Testes da rota de usuários utilizando pytest
 
 🏗️ Como rodar o projeto
 - Instalar ambiente virtual usando venv
 - Instalar dependências: pip install -r requirements.txt
-- Rodar banco de dados: make psql-up
+- Subir banco de dados: make psql-up
+- Rodar os testes: pytest
