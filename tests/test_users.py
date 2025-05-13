@@ -14,10 +14,10 @@ def test_post_user_success(client):
 
 def test_create_user_already_registered(client):
     payload = {
-        "email": "teste@teste.com",
+        "email": "teste70@teste.com",
         "password": "1234",
         "name": "Teste",
-        "document_number": "12345678910"
+        "document_number": "12345678925"
     }
 
     response = client.post("/user/register", json=payload)
@@ -31,7 +31,7 @@ def test_create_user_already_registered(client):
 
 def test_user_login_success(client):
     payload = {
-        "username": "teste@teste.com",
+        "username": "teste70@teste.com",
         "password": "1234",
     }
 
