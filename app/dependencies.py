@@ -4,10 +4,10 @@ from sqlalchemy.orm import Session
 
 from app.db import SessionLocal
 from app.routes.users.controllers.user_auth_controller import (
-        UserAuthController
+    UserAuthController
 )
 
-oauth_scheme = OAuth2PasswordBearer(tokenUrl='/user/login')
+oauth_scheme = OAuth2PasswordBearer(tokenUrl="/user/login")
 
 
 def get_db():
@@ -19,22 +19,19 @@ def get_db():
 
 
 def token_verifier(
-    db_session: Session = Depends(get_db),
-    token=Depends(oauth_scheme)
-):
-    return (
-        UserAuthController(
-            db_session=db_session
-        ).verify_token(access_token=token)
+        db_session: Session = Depends(get_db),
+        token=Depends(oauth_scheme)
+        ):
+    """Método para verificação do token de autenticação do usuário"""
+    return UserAuthController(db_session=db_session).verify_token(
+        access_token=token
     )
 
 
 def get_current_user(
-        db_session: Session = Depends(get_db),
-        token=Depends(oauth_scheme)
+    db_session: Session = Depends(get_db), token=Depends(oauth_scheme)
 ):
-    return (
-        UserAuthController(
-            db_session=db_session
-        ).get_user_token(access_token=token)
+    """Método para verificação do token de autenticaçõ do usuário"""
+    return UserAuthController(db_session=db_session).get_user_token(
+        access_token=token
     )
