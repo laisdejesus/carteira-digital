@@ -23,12 +23,10 @@ class CreditUser(Base):
 
     @classmethod
     def create_credit(cls, db: Session, user_id: int, credit: float):
-        print("CCCCCCCCCCC", credit)
         db_credit = cls(
             credit_value=credit,
             user_id=user_id,
         )
-        # try: #melhorar essas aqui, talvez levar o try ecept pro controller
 
         db.add(db_credit)
         db.commit()
@@ -37,6 +35,8 @@ class CreditUser(Base):
 
     @classmethod
     def update_credit(cls, db: Session, user_id: int, new_credit: float):
-        db.query(cls).filter(cls.id == user_id).update({"credit_value": new_credit})
+        db.query(cls).filter(cls.id == user_id).update(
+            {"credit_value": new_credit}
+        )
         db.commit()
         return db.query(cls).filter(cls.id == user_id).first()
