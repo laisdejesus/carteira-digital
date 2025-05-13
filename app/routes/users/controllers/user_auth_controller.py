@@ -4,14 +4,12 @@ from sqlalchemy.orm import Session
 from jose import jwt, JWTError
 
 from app.db.models.user import User
+from app.settings import settings
 
 from passlib.context import CryptContext
 
 
 crypt_context = CryptContext(schemes=["sha256_crypt"])
-
-SECRET_KEY = "f7fdf23eb3b76d1789e0cc94331cfca849e97960dc08c5236bef3e1113ff38f0"
-ALGORITHM = "HS256"
 
 
 class UserAuthController:
@@ -27,7 +25,11 @@ class UserAuthController:
     def get_user_token(self, access_token):
         """Método para buscar usuário do token relacionado"""
         try:
-            data = jwt.decode(access_token, SECRET_KEY, algorithms=[ALGORITHM])
+            data = jwt.decode(
+                access_token,
+                settings.SECRET_KEY,
+                algorithms=[settings.ALGORITHM]
+            )
             user = User.get_user_by_email(self.db_session, email=data["sub"])
 
         except JWTError:

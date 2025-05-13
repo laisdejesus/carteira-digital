@@ -6,12 +6,12 @@ from jose import jwt
 
 from app.db.models.user import User
 from app.routes.users.schemas.user_schema import UserLogin
+from app.settings import settings
 from passlib.context import CryptContext
 
 
 crypt_context = CryptContext(schemes=["sha256_crypt"])
-SECRET_KEY = "f7fdf23eb3b76d1789e0cc94331cfca849e97960dc08c5236bef3e1113ff38f0"
-ALGORITHM = "HS256"  
+
 
 
 class UserLoginController:
@@ -57,7 +57,11 @@ class UserLoginController:
 
         payload = {"sub": self.user_login_email, "exp": exp}
 
-        access_token = jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+        access_token = jwt.encode(
+            payload,
+            settings.SECRET_KEY,
+            settings.ALGORITHM
+        )
 
         return {
             "access_token": access_token,

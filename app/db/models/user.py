@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 
-# from app.db.database import Base
+
 from app.db import Base
 from app.routes.users.schemas.user_schema import UserCreate, UserLogin
 from passlib.context import CryptContext

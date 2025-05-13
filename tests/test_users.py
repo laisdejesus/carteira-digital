@@ -14,11 +14,13 @@ def test_post_user_success(client):
 
 def test_create_user_already_registered(client):
     payload = {
-        "email": "teste@teste.com",
+        "email": "teste70@teste.com",
         "password": "1234",
         "name": "Teste",
-        "document_number": "12345678910"
+        "document_number": "12345678925"
     }
+
+    client.post("/user/register", json=payload)
 
     response = client.post("/user/register", json=payload)
 
@@ -30,12 +32,21 @@ def test_create_user_already_registered(client):
 
 
 def test_user_login_success(client):
-    payload = {
-        "username": "teste@teste.com",
+    registration_payload = {
+        "email": "teste70@teste.com",
+        "password": "1234",
+        "name": "Teste",
+        "document_number": "12345678925"
+    }
+
+    client.post("/user/register", json=registration_payload)
+
+    login_payload = {
+        "username": "teste70@teste.com",
         "password": "1234",
     }
 
-    response = client.post("/user/login", data=payload)
+    response = client.post("/user/login", data=login_payload)
 
     assert response.status_code == 200
     assert "access_token" in response.json()
