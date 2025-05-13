@@ -7,3 +7,4 @@ passlib==1.7.4
 python-jose==3.4.0
 python-multipart
 python-decouple==3.8
+black
