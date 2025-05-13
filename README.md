@@ -19,9 +19,13 @@ FastAPI como framework principal.
 Banco de Dados Relacional utilizando PostgreSQL e ORM como SQLAlchemy.
 Ferramenta de migrations utilizando Alembic
 Testes da rota de usuários utilizando pytest
+As três funcionalidades implementadas foram divididas em três grupos de rotas para já manter organizado para adição de funcionalidades futuras.
+Cada rota com seus respectivos controllers, viewer e schema.
+
 
 🏗️ Como rodar o projeto
 - Instalar ambiente virtual usando venv
 - Instalar dependências: pip install -r requirements.txt
+- Subir todos os serviços: make all-up
 - Subir banco de dados: make psql-up
 - Rodar os testes: pytest
