@@ -8,3 +8,9 @@ psql-up:
 # Remove your local database
 psql-down:
 	sudo docker compose -f docker-compose.yml down -v --remove-orphans
+# up all services
+all-up:
+	docker compose up --build
+# down all services
+all-down:
+	docker compose down
