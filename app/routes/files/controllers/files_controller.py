@@ -1,12 +1,5 @@
 import os
 
-from sqlalchemy.orm import Session
-from fastapi import Depends, FastAPI, HTTPException
-
-from app.db.models.user import User
-
-# from app.users.schemas.user_schema import UserCreate
-
 
 class FilesController:
     """Classe para realizar Gestão do documentos"""
